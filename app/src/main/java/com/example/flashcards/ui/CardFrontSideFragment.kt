@@ -6,19 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.example.flashcards.databinding.FragmentAddCardBinding
+import com.example.flashcards.databinding.FragmentFrontSideBinding
 import com.example.flashcards.databinding.FragmentTestBinding
 
-class AddCardFragment : Fragment() {
+class CardFrontSideFragment : Fragment() {
 
-    private lateinit var binding: FragmentAddCardBinding
+    private lateinit var binding: FragmentFrontSideBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentAddCardBinding.inflate(layoutInflater)
+        binding = FragmentFrontSideBinding.inflate(layoutInflater)
 
         binding.toolbar.setNavigationOnClickListener { view ->
             view.findNavController().navigateUp()
