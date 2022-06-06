@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/deckListFragment">
+
+    <fragment
+        android:id="@+id/deckListFragment"
+        android:name="com.example.flashcards.ui.DeckListFragment"
+        android:label="DeckListFragment">
+        <action
+            android:id="@+id/action_deckListFragment_To_AddToCollectionPagerFragment"
+            app:destination="@id/addToCollectionPagerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addToCollectionPagerFragment"
+        android:name="com.example.flashcards.ui.AddToCollectionPagerFragment"
+        android:label="AddToCollectionPagerFragment" >
+        <action
+            android:id="@+id/action_addToCollectionPagerFragment_to_deckListFragment"
+            app:destination="@id/deckListFragment" />
+    </fragment>
+</navigation>
