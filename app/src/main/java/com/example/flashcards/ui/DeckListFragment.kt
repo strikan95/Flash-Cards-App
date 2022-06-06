@@ -19,12 +19,25 @@ class DeckListFragment : Fragment() {
     ): View? {
         binding = FragmentDeckListBinding.inflate(layoutInflater)
         binding.addNewDeckBtn.setOnClickListener { showAddToCollectionAdapter() }
+        binding.testBtn.setOnClickListener{ showTestFragment() }
+        binding.addNewCardBtn.setOnClickListener{showAddNewCardFragment()}
         return binding.root
 
     }
 
     private fun showAddToCollectionAdapter(){
+
         val action = DeckListFragmentDirections.actionDeckListFragmentToAddToCollectionPagerFragment()
+        findNavController().navigate(action)
+    }
+
+    private fun showTestFragment(){
+        val action = DeckListFragmentDirections.actionDeckListFragmentToTestFragment2()
+        findNavController().navigate(action)
+    }
+
+    private fun showAddNewCardFragment(){
+        val action = DeckListFragmentDirections.actionDeckListFragmentToAddCardFragment()
         findNavController().navigate(action)
     }
 }
