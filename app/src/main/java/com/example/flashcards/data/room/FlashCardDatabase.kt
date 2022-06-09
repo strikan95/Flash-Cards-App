@@ -13,7 +13,7 @@ import com.example.flashcards.models.Deck
 
 @Database(
     entities = [Card::class, Deck::class],
-    version = 1,
+    version = 3,
     exportSchema = false
 )
 @TypeConverters(FlashCardConverters::class)
@@ -45,6 +45,7 @@ abstract class FlashCardDatabase : RoomDatabase() {
                 databaseName
             )
                 .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
                 .build()
         }
     }

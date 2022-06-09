@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "decks")
 data class Deck(
     @PrimaryKey(autoGenerate = true)
-    var deckId: Long = 0,
+    var id: Long = 0,
     @ColumnInfo(name = "deckName")
     var deckName: String
 )

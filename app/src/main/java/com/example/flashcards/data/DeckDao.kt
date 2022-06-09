@@ -12,7 +12,7 @@ interface DeckDao {
     @Delete
     fun delete(deck: Deck)
 
-    @Query("SELECT * FROM decks WHERE deckId =:id")
+    @Query("SELECT * FROM decks WHERE id =:id")
     fun getDeckById(id: Long?): Deck?
 
     @Query("SELECT * FROM decks")

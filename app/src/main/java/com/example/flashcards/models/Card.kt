@@ -9,6 +9,8 @@ import java.util.*
 data class Card(
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0,
+    @ColumnInfo(name = "deck_id")
+    var deck_id: Long = 0,
     @ColumnInfo(name = "title")
     var title: String,
     @ColumnInfo(name = "body")

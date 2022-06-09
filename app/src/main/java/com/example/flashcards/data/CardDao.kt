@@ -18,4 +18,7 @@ interface CardDao {
 
     @Query("SELECT * FROM cards")
     fun getAllCards(): LiveData<List<Card>>
+
+    @Query("SELECT * FROM cards WHERE deck_id =:deckId")
+    fun getAllCardsFromDeck(deckId: Long): LiveData<List<Card>>
 }

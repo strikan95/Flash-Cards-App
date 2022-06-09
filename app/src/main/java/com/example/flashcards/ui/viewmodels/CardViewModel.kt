@@ -10,12 +10,12 @@ class CardViewModel : ViewModel(){
     var currentCard: Card? = null
 
     init {
-        cardList.add(0, Card(0,"Card 1", "answer 1"))
-        cardList.add(1, Card(1,"card 2", "answer 2"))
-        cardList.add(2, Card(2,"card 3", "answer 3"))
-        cardList.add(3, Card(3,"card 4", "answer 4"))
-        cardList.add(4, Card(4,"card 5", "answer 5"))
-        cardList.add(5, Card(5,"card 6", "answer 6"))
+        cardList.add(0, Card(0, 0,"Card 1", "answer 1"))
+        cardList.add(1, Card(1, 0,"card 2", "answer 2"))
+        cardList.add(2, Card(2, 0,"card 3", "answer 3"))
+        cardList.add(3, Card(3, 0,"card 4", "answer 4"))
+        cardList.add(4, Card(4, 0,"card 5", "answer 5"))
+        cardList.add(5, Card(5, 0,"card 6", "answer 6"))
     }
 
     private fun loadCard(){

@@ -9,4 +9,5 @@ interface CardRepository {
     fun delete(task: Card)
     fun getCardById(id: Long): Card?
     fun getAllCards(): LiveData<List<Card>>
+    fun getAllCardsFromDeck(deckId: Long): LiveData<List<Card>>
 }

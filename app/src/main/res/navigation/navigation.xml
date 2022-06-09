@@ -30,5 +30,17 @@
         <argument
             android:name="deckId"
             app:argType="long" />
+        <action
+            android:id="@+id/action_deckDetailsFragment_to_newCardFragment"
+            app:destination="@id/newCardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newCardFragment"
+        android:name="com.example.flashcards.ui.card_new.NewCardFragment"
+        android:label="NewCardFragment"
+        tools:layout="@layout/fragment_new_card">
+        <argument
+            android:name="deckId"
+            app:argType="long" />
     </fragment>
 </navigation>

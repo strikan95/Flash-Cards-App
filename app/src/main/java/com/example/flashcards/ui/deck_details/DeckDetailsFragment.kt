@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.flashcards.databinding.FragmentDeckDetailsBinding
 import com.example.flashcards.models.Deck
+import com.example.flashcards.ui.deck_list.DeckListFragmentDirections
 import com.example.flashcards.ui.viewmodels.DeckDetailsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -24,6 +26,8 @@ class DeckDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDeckDetailsBinding.inflate(layoutInflater)
+
+        binding.deckDetailsEditDeckBtn.setOnClickListener{ showNewCardFragment() }
 
         binding.toolbar.setNavigationOnClickListener { view ->
             view.findNavController().navigateUp()
@@ -44,6 +48,11 @@ class DeckDetailsFragment : Fragment() {
                 deckDetailsDeckTitle.text = deck.deckName
             }
         }
+    }
+
+    private fun showNewCardFragment(){
+        val action = DeckDetailsFragmentDirections.actionDeckDetailsFragmentToNewCardFragment(args.deckId)
+        findNavController().navigate(action)
     }
 
     companion object{

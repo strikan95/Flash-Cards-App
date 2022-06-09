@@ -7,7 +7,7 @@ import com.example.flashcards.models.Card
 class NewCardViewModel(
     val cardRepository: CardRepository
 ) : ViewModel() {
-    fun save(title: String, body: String) {
-        cardRepository.save(Card(0, title, body))
+    fun save(deckId: Long, title: String, body: String) {
+        cardRepository.save(Card(0, deckId, title, body))
     }
 }

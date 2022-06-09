@@ -1,4 +1,4 @@
-package com.example.flashcards.ui
+package com.example.flashcards.ui.card_new
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,24 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import com.example.flashcards.databinding.FragmentAddCardBinding
-import com.example.flashcards.databinding.FragmentTestBinding
+import androidx.navigation.fragment.navArgs
+import com.example.flashcards.databinding.FragmentNewCardBinding
 import com.example.flashcards.ui.viewmodels.NewCardViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class AddCardFragment : Fragment() {
+class NewCardFragment : Fragment() {
 
-    private lateinit var binding: FragmentAddCardBinding
+    private lateinit var binding: FragmentNewCardBinding
     private val viewModel: NewCardViewModel by viewModel()
+    private val args: NewCardFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentAddCardBinding.inflate(layoutInflater)
+        binding = FragmentNewCardBinding.inflate(layoutInflater)
         binding.addNewCardBtn.setOnClickListener{ saveCard() }
 
         binding.toolbar.setNavigationOnClickListener { view ->
@@ -36,16 +36,19 @@ class AddCardFragment : Fragment() {
         val title = binding.cardTitleInputBox.text.toString()
         val body = binding.cardBodyInputBox.text.toString()
 
-        viewModel.save(title, body)
+        viewModel.save(args.deckId, title, body)
 
         Toast.makeText(context, "Card added", Toast.LENGTH_SHORT).show()
+
+        binding.cardTitleInputBox.text.clear()
+        binding.cardBodyInputBox.text.clear()
     }
 
     companion object {
         val Tag = "NewTask"
 
         fun create(): Fragment {
-            return AddCardFragment()
+            return NewCardFragment()
         }
     }
 }
