@@ -22,8 +22,6 @@ class DeckListFragment : Fragment() {
         binding.testBtn.setOnClickListener{ showTestFragment() }
         binding.addNewCardBtn.setOnClickListener{ showAddNewCardFragment() }
         binding.viewDeckBtn.setOnClickListener{ showViewDeckFragment() }
-        binding.viewFrontSideBtn.setOnClickListener{ showFrontSideFragment() }
-        binding.viewBackSideBtn.setOnClickListener{ showBackSideFragment() }
         return binding.root
 
     }
@@ -46,16 +44,6 @@ class DeckListFragment : Fragment() {
 
     private fun showViewDeckFragment(){
         val action = DeckListFragmentDirections.actionDeckListFragmentToViewDeckFragment()
-        findNavController().navigate(action)
-    }
-
-    private fun showFrontSideFragment(){
-        val action = DeckListFragmentDirections.actionDeckListFragmentToCardFrontSideFragment()
-        findNavController().navigate(action)
-    }
-
-    private fun showBackSideFragment(){
-        val action = DeckListFragmentDirections.actionDeckListFragmentToCardBackSideFragment()
         findNavController().navigate(action)
     }
 }

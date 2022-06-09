@@ -19,8 +19,7 @@ class CollectionAdapter(fragment: Fragment): FragmentStateAdapter(fragment){
 
     override fun getItemCount() = tabFragmentsCreators.size
 
-    override fun createFragment(position: Int) :Fragment{
-        return tabFragmentsCreators[position]?.invoke()?:throw IndexOutOfBoundsException()
+    override fun createFragment(position: Int) :Fragment {
+        return tabFragmentsCreators[position]?.invoke() ?: throw IndexOutOfBoundsException()
     }
-
 }

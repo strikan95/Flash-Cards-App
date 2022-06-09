@@ -20,12 +20,6 @@
         <action
             android:id="@+id/action_deckListFragment_to_viewDeckFragment"
             app:destination="@id/viewDeckFragment" />
-        <action
-            android:id="@+id/action_deckListFragment_to_cardFrontSideFragment"
-            app:destination="@id/cardFrontSideFragment" />
-        <action
-            android:id="@+id/action_deckListFragment_to_cardBackSideFragment"
-            app:destination="@id/cardBackSideFragment" />
     </fragment>
     <fragment
         android:id="@+id/addToCollectionPagerFragment"
@@ -43,12 +37,4 @@
         android:id="@+id/viewDeckFragment"
         android:name="com.example.flashcards.ui.ViewDeckFragment"
         android:label="ViewDeckFragment" />
-    <fragment
-        android:id="@+id/cardFrontSideFragment"
-        android:name="com.example.flashcards.ui.CardFrontSideFragment"
-        android:label="CardFrontSideFragment" />
-    <fragment
-        android:id="@+id/cardBackSideFragment"
-        android:name="com.example.flashcards.ui.CardBackSideFragment"
-        android:label="CardBackSideFragment" />
 </navigation>

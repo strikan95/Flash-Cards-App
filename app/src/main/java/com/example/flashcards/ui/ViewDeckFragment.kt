@@ -7,17 +7,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.flashcards.databinding.FragmentTestBinding
+import com.example.flashcards.databinding.FragmentViewDeckBinding
 
 class ViewDeckFragment : Fragment() {
 
-    private lateinit var binding: FragmentTestBinding
+    private lateinit var binding: FragmentViewDeckBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentTestBinding.inflate(layoutInflater)
+        binding = FragmentViewDeckBinding.inflate(layoutInflater)
 
         binding.toolbar.setNavigationOnClickListener { view ->
             view.findNavController().navigateUp()
