@@ -25,6 +25,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
+        android:id="@+id/deck_details_deck_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Deck name"
@@ -113,7 +114,7 @@
             android:layout_margin="4dp"/>
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/deck_details_edit_deck_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Edit"
