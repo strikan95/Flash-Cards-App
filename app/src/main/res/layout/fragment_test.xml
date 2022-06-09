@@ -2,26 +2,57 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+    <TextView
+        android:id="@+id/cardText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="This is a question"
+        android:gravity="center"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/turnCardBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Answer" />
+
+    <LinearLayout
+        android:id="@+id/answerTypeBtnLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_margin="4dp"
+        android:gravity="center"
+        android:visibility="gone">
+        <Button
+            android:id="@+id/againBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Again"
+            android:layout_margin="4dp" />
+        <Button
+            android:id="@+id/hardBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hard"
+            android:layout_margin="4dp" />
+        <Button
+            android:id="@+id/goodBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Good"
+            android:layout_margin="4dp" />
+        <Button
+            android:id="@+id/easyBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Easy"
+            android:layout_margin="4dp" />
 
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/arrow_back_48px"/>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-
+    </LinearLayout>
 </LinearLayout>
