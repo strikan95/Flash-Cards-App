@@ -8,7 +8,10 @@ import com.example.flashcards.data.repository.CardRepositoryImpl
 import com.example.flashcards.data.repository.DeckRepository
 import com.example.flashcards.data.repository.DeckRepositoryImpl
 import com.example.flashcards.data.room.FlashCardDatabase
+import com.example.flashcards.ui.viewmodels.DeckDetailsViewModel
+import com.example.flashcards.ui.viewmodels.DeckListViewModel
 import com.example.flashcards.ui.viewmodels.NewCardViewModel
+import com.example.flashcards.ui.viewmodels.NewDeckViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -36,5 +39,8 @@ val repositoryModule = module {
 
 val viewmodelModule = module {
     viewModel { NewCardViewModel(get())  }
+    viewModel { NewDeckViewModel(get())  }
+    viewModel { DeckListViewModel(get()) }
+    viewModel { DeckDetailsViewModel(get()) }
 
 }

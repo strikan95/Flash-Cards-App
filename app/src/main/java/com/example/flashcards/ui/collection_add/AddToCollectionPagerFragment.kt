@@ -1,4 +1,4 @@
-package com.example.flashcards.ui
+package com.example.flashcards.ui.collection_add
 
 import android.os.Bundle
 import android.view.LayoutInflater

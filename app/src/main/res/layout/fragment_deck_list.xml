@@ -6,54 +6,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/deck_list_rv_decks"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:text="Deck list fragment"
-        android:layout_weight="1"
-        android:layout_gravity="center"
-        android:gravity="center"/>
+        android:layout_weight="1"/>
 
     <Button
         android:id="@+id/addNewDeckBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add new deck"
-        android:layout_gravity="center"/>
-
-    <Button
-        android:id="@+id/addNewCardBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add card fragment"
-        android:layout_gravity="center"/>
-
-    <Button
-        android:id="@+id/viewDeckBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="To view deck fragment"
-        android:layout_gravity="center"/>
-
-    <Button
-        android:id="@+id/viewFrontSideBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="To front side fragment"
-        android:layout_gravity="center"/>
-
-    <Button
-        android:id="@+id/viewBackSideBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="To back side fragment"
-        android:layout_gravity="center"/>
-
-    <Button
-        android:id="@+id/testBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="To test fragment"
         android:layout_gravity="center"/>
 </LinearLayout>

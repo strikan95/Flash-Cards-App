@@ -1,5 +1,6 @@
 package com.example.flashcards.data
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.flashcards.models.Deck
 
@@ -11,6 +12,9 @@ interface DeckDao {
     @Delete
     fun delete(deck: Deck)
 
+    @Query("SELECT * FROM decks WHERE deckId =:id")
+    fun getDeckById(id: Long?): Deck?
+
     @Query("SELECT * FROM decks")
-    fun getAllDecks(): MutableList<Deck>
+    fun getAllDecks(): LiveData<List<Deck>>
 }
