@@ -29,7 +29,7 @@ class DeckAdapter: RecyclerView.Adapter<DeckViewHolder>(){
         val deck = decks[position]
         holder.bind(deck)
         onDeckSelectedListener?.let { listener ->
-            holder.itemView.setOnClickListener { listener.onDeckSelected(deck.id) }
+            holder.itemView.setOnClickListener { listener.onDeckSelected(deck.deck_id) }
         }
     }
 

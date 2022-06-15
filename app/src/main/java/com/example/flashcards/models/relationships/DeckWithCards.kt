@@ -8,8 +8,8 @@ import com.example.flashcards.models.Deck
 data class DeckWithCards (
     @Embedded val deck: Deck,
     @Relation(
-        parentColumn = "id",
-        entityColumn = "deck_id"
+        parentColumn = "deck_id",
+        entityColumn = "card_deck_id"
     )
     val cards: List<Card>
 )

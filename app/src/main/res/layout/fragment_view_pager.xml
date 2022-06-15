@@ -11,12 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/white"
+                app:navigationIcon="@drawable/close_48px"
+                app:collapseIcon="@color/white">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/arrow_back_48px" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Add to collection"
+                    android:textSize="24sp"/>
+            </com.google.android.material.appbar.MaterialToolbar>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"

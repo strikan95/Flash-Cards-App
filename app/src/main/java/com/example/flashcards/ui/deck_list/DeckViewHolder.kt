@@ -8,6 +8,7 @@ import com.example.flashcards.models.Deck
 class DeckViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(deck: Deck){
         val binding = ItemDeckBinding.bind(itemView)
-        binding.itemDeckTitle.text = deck.deckName
+        binding.itemDeckTitle.text = deck.deck_name
+
     }
 }

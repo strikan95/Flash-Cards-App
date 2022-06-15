@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/deck_study_card_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="This is a question"
+        android:gravity="center"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/deck_study_turn_card_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Answer" />
+
+    <LinearLayout
+        android:id="@+id/deck_study_answer_card_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/deck_study_again_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Again"
+            android:layout_margin="4dp" />
+
+        <Button
+            android:id="@+id/deck_study_hard_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hard"
+            android:layout_margin="4dp" />
+
+        <Button
+            android:id="@+id/deck_study_good_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Good"
+            android:layout_margin="4dp" />
+
+        <Button
+            android:id="@+id/deck_study_easy_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Easy"
+            android:layout_margin="4dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

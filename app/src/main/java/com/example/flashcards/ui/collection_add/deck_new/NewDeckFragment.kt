@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.flashcards.databinding.FragmentNewDeckBinding
-import com.example.flashcards.ui.viewmodels.NewDeckViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NewDeckFragment : Fragment() {

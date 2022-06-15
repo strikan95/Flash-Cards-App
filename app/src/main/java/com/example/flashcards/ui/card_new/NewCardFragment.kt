@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.flashcards.databinding.FragmentNewCardBinding
-import com.example.flashcards.ui.viewmodels.NewCardViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NewCardFragment : Fragment() {

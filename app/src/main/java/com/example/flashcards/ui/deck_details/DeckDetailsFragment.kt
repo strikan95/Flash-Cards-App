@@ -10,8 +10,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.flashcards.databinding.FragmentDeckDetailsBinding
 import com.example.flashcards.models.Deck
-import com.example.flashcards.ui.deck_list.DeckListFragmentDirections
-import com.example.flashcards.ui.viewmodels.DeckDetailsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DeckDetailsFragment : Fragment() {
@@ -27,7 +25,8 @@ class DeckDetailsFragment : Fragment() {
     ): View? {
         binding = FragmentDeckDetailsBinding.inflate(layoutInflater)
 
-        binding.deckDetailsEditDeckBtn.setOnClickListener{ showNewCardFragment() }
+        binding.deckDetailsNewCardBtn.setOnClickListener{ showNewCardFragment() }
+        binding.deckDetailsStudyBtn.setOnClickListener{ showDeckStudyFragment() }
 
         binding.toolbar.setNavigationOnClickListener { view ->
             view.findNavController().navigateUp()
@@ -45,13 +44,18 @@ class DeckDetailsFragment : Fragment() {
     private fun display(deck: Deck?){
         deck?.let {
             binding.apply {
-                deckDetailsDeckTitle.text = deck.deckName
+                deckDetailsDeckTitle.text = deck.deck_name
             }
         }
     }
 
     private fun showNewCardFragment(){
         val action = DeckDetailsFragmentDirections.actionDeckDetailsFragmentToNewCardFragment(args.deckId)
+        findNavController().navigate(action)
+    }
+
+    private fun showDeckStudyFragment(){
+        val action = DeckDetailsFragmentDirections.actionDeckDetailsFragmentToDeckStudyFragment(args.deckId)
         findNavController().navigate(action)
     }
 

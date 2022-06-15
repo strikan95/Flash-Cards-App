@@ -10,29 +10,23 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
+        android:layout_height="wrap_content">
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/arrow_back_48px"/>
+            android:background="@color/white"
+            app:navigationIcon="@drawable/arrow_back_48px"
+            app:collapseIcon="@color/white">
+            <TextView
+                android:id="@+id/deck_details_deck_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Deck name"
+                android:textSize="24sp"/>
 
+        </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
-
-    <TextView
-        android:id="@+id/deck_details_deck_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Deck name"
-        android:gravity="center"
-        android:textSize="24dp"
-        android:layout_marginTop="8dp"/>
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -107,18 +101,19 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/deck_details_study_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Study"
             android:layout_margin="4dp"/>
 
         <Button
-            android:id="@+id/deck_details_edit_deck_btn"
+            android:id="@+id/deck_details_new_card_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit"
+            android:text="Add"
             android:layout_margin="4dp"/>
+
     </LinearLayout>
 
 </LinearLayout>

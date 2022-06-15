@@ -4,18 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/deck_list_rv_decks"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white">
+        <TextView
+            android:id="@+id/deck_details_deck_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="My Collection"
+            android:textSize="24sp"
+            android:gravity="center"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <Button
-        android:id="@+id/addNewDeckBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add new deck"
-        android:layout_gravity="center"/>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleLine="true"
+            app:singleSelection="true">
+        </com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/deck_list_rv_decks"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/addNewDeckBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:text="New Deck"
+            app:icon="@drawable/add_48px" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </LinearLayout>

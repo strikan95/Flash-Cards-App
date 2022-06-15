@@ -33,12 +33,24 @@
         <action
             android:id="@+id/action_deckDetailsFragment_to_newCardFragment"
             app:destination="@id/newCardFragment" />
+        <action
+            android:id="@+id/action_deckDetailsFragment_to_deckStudyFragment"
+            app:destination="@id/deckStudyFragment" />
     </fragment>
     <fragment
         android:id="@+id/newCardFragment"
         android:name="com.example.flashcards.ui.card_new.NewCardFragment"
         android:label="NewCardFragment"
         tools:layout="@layout/fragment_new_card">
+        <argument
+            android:name="deckId"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/deckStudyFragment"
+        android:name="com.example.flashcards.ui.deck_study.DeckStudyFragment"
+        android:label="DeckStudyFragment"
+        tools:layout="@layout/fragment_deck_study">
         <argument
             android:name="deckId"
             app:argType="long" />

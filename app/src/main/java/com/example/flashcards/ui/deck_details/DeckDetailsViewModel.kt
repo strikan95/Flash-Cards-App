@@ -1,7 +1,7 @@
-package com.example.flashcards.ui.viewmodels
+package com.example.flashcards.ui.deck_details
 
 import androidx.lifecycle.ViewModel
-import com.example.flashcards.data.repository.DeckRepository
+import com.example.flashcards.data.repository.deck.DeckRepository
 import com.example.flashcards.models.Deck
 
 class DeckDetailsViewModel(
