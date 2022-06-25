@@ -4,35 +4,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    style="@style/linearLayoutWithPadding">
 
-    <LinearLayout
+    <!-- DECK NAME ELEMENT -->
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:layout_margin="4dp"
+        android:hint="Deck Name"
+        style="?attr/textInputOutlinedStyle"
+        android:layout_marginBottom="16dp"
+        app:boxStrokeColor="@color/s_soft_grey"
         >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Deck name"
-            android:layout_marginRight="4dp"/>
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/deckNameInputBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            android:fontFamily="@font/raleway"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- DECK CATEGORY ELEMENT -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_round_bordered"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Deck Catergory"
+            style="@style/FlashCardListSeperatorTextViewStyle"/>
+
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/ned_deck_chip_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleLine="true"
+                app:singleSelection="true">
+            </com.google.android.material.chip.ChipGroup>
+
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+    <!-- DECK SETTINGS ELEMENT -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_round_bordered"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Deck Settings"
+            style="@style/FlashCardListSeperatorTextViewStyle"
+            android:background="@drawable/list_separator"/>
+
+
+            <Spinner
+                android:id="@+id/settings_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                />
+
     </LinearLayout>
 
    <Button
        android:id="@+id/createDeckBtn"
-       android:layout_width="wrap_content"
+       android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:text="Create Deck"
        android:gravity="center"
-       android:layout_gravity="center"
-       android:layout_margin="4dp"/>
+       android:layout_gravity="center"/>
 </LinearLayout>

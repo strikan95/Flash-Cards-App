@@ -1,0 +1,60 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/add_settings_bottom_sheet"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="16dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:windowSoftInputMode="adjustResize">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Settings Name"
+        style="?attr/textInputOutlinedStyle"
+        android:layout_marginBottom="16dp"
+        app:boxStrokeColor="@color/s_soft_grey"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/settings_name_input_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Number of new cards per day"
+        style="?attr/textInputOutlinedStyle"
+        android:layout_marginBottom="16dp"
+        app:boxStrokeColor="@color/s_soft_grey"
+        app:errorEnabled="true"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:inputType="number"
+            android:id="@+id/settings_num_new_cards_input_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/create_setting_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Setting"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textColor="@color/black" />
+
+</LinearLayout>

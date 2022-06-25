@@ -4,21 +4,29 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toolbar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.flashcards.R
 import com.example.flashcards.databinding.FragmentDeckDetailsBinding
 import com.example.flashcards.models.Deck
-import com.example.flashcards.ui.deck_list.DeckListFragmentDirections
-import com.example.flashcards.ui.viewmodels.DeckDetailsViewModel
+import com.example.flashcards.models.relationships.DeckWithCards
+import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.*
+import java.util.concurrent.TimeUnit
 
-class DeckDetailsFragment : Fragment() {
+class DeckDetailsFragment() : Fragment() {
 
     private lateinit var binding: FragmentDeckDetailsBinding
-    private val viewModel: DeckDetailsViewModel by viewModel()
     private val args: DeckDetailsFragmentArgs by navArgs()
+    private val viewModel: DeckDetailsViewModel by viewModel()
+
+    private lateinit var toolbar: MaterialToolbar
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,32 +34,63 @@ class DeckDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDeckDetailsBinding.inflate(layoutInflater)
+        binding.deckDetailsNewCardBtn.setOnClickListener{ showNewCardFragment() }
+        binding.deckDetailsStudyBtn.setOnClickListener{ showDeckStudyFragment() }
 
-        binding.deckDetailsEditDeckBtn.setOnClickListener{ showNewCardFragment() }
 
-        binding.toolbar.setNavigationOnClickListener { view ->
-            view.findNavController().navigateUp()
-        }
-
+        toolbar = requireActivity().findViewById(R.id.toolbar)
+        toolbar.title = null
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val deck = viewModel.getDeckById(args.deckId)
-        display(deck)
+        viewModel.setDeckWithCards(args.deckId)
+        display(viewModel.getDeckWithCards().value)
     }
 
-    private fun display(deck: Deck?){
+    private fun display(deck: DeckWithCards?){
         deck?.let {
             binding.apply {
-                deckDetailsDeckTitle.text = deck.deckName
+                toolbar.title = deck.deck.deck_name
+
+                val numOfNewCards = deck.cards.count {
+                    it.card_last_date_revised == null
+                }
+                if (numOfNewCards < 3){
+                    numNewCards.text = numOfNewCards.toString()
+                }else{
+                    numNewCards.text = 3.toString()
+                }
+
+                TimeUnit.DAYS.toMillis(viewModel.timeInDays)
+
+                numCardsToRevise.text = deck.cards.count {
+                    it.card_last_date_revised != null &&
+                            it.card_last_date_revised!!.time <=
+                            TimeUnit.DAYS.toMillis(viewModel.timeInDays)
+                }.toString()
+
+                numCardsDue.text = deck.cards.count {
+                    it.card_last_date_revised != null &&
+
+                    it.card_last_date_revised!!.time >=
+                    (TimeUnit.DAYS.toMillis(viewModel.timeInDays) + 1) &&
+
+                    it.card_last_date_revised!!.time <=
+                    (TimeUnit.DAYS.toMillis(viewModel.timeInDays + 1) - 1)
+                }.toString()
             }
         }
     }
 
     private fun showNewCardFragment(){
         val action = DeckDetailsFragmentDirections.actionDeckDetailsFragmentToNewCardFragment(args.deckId)
+        findNavController().navigate(action)
+    }
+
+    private fun showDeckStudyFragment(){
+        val action = DeckDetailsFragmentDirections.actionDeckDetailsFragmentToDeckStudyFragment(args.deckId)
         findNavController().navigate(action)
     }
 

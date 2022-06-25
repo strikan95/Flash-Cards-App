@@ -7,33 +7,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/arrow_back_48px"/>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <TextView
-        android:id="@+id/deck_details_deck_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Deck name"
-        android:gravity="center"
-        android:textSize="24dp"
-        android:layout_marginTop="8dp"/>
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -49,6 +22,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:text=" "/>
 
+        <!-- NEW CARDS -->
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
@@ -59,14 +33,15 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/num_new_cards"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="8"
-            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintBottom_toTopOf="@+id/num_cards_to_revise"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/dummy" />
 
+        <!-- CARDS TO REVISE -->
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
@@ -76,13 +51,14 @@
             app:layout_constraintTop_toTopOf="@+id/dummy" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/num_cards_to_revise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="8"
-            app:layout_constraintStart_toStartOf="@+id/textView4"
+            app:layout_constraintStart_toStartOf="@+id/num_new_cards"
             app:layout_constraintTop_toTopOf="@+id/dummy" />
 
+        <!-- CARDS DUE -->
         <TextView
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
@@ -92,12 +68,12 @@
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/num_cards_due"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="8"
-            app:layout_constraintStart_toStartOf="@+id/textView7"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            app:layout_constraintStart_toStartOf="@+id/num_cards_to_revise"
+            app:layout_constraintTop_toBottomOf="@+id/num_cards_to_revise" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -107,18 +83,19 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/deck_details_study_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Study"
             android:layout_margin="4dp"/>
 
         <Button
-            android:id="@+id/deck_details_edit_deck_btn"
+            android:id="@+id/deck_details_new_card_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit"
+            android:text="Add"
             android:layout_margin="4dp"/>
+
     </LinearLayout>
 
 </LinearLayout>

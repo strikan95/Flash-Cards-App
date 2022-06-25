@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/navigation_main_fragment"
+app:startDestination="@id/deckListFragment">
+    <fragment
+        android:id="@+id/deckListFragment"
+        android:name="com.example.flashcards.ui.deck_list.DeckListFragment"
+        tools:layout="@layout/fragment_deck_list">
+        <action
+            android:id="@+id/action_deckListFragment_To_AddToCollectionPagerFragment"
+            app:destination="@id/addToCollectionPagerFragment" />
+        <action
+            android:id="@+id/action_deckListFragment_to_deckDetailsFragment"
+            app:destination="@id/deckDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addToCollectionPagerFragment"
+        android:name="com.example.flashcards.ui.collection_add.AddToCollectionPagerFragment"
+        tools:layout="@layout/fragment_new_deck" >
+        <action
+            android:id="@+id/action_addToCollectionPagerFragment_to_deckListFragment"
+            app:destination="@id/deckListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/deckDetailsFragment"
+        android:name="com.example.flashcards.ui.deck_details.DeckDetailsFragment"
+        tools:layout="@layout/fragment_deck_details">
+        <argument
+            android:name="deckId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_deckDetailsFragment_to_newCardFragment"
+            app:destination="@id/newCardFragment" />
+        <action
+            android:id="@+id/action_deckDetailsFragment_to_deckStudyFragment"
+            app:destination="@id/deckStudyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newCardFragment"
+        android:name="com.example.flashcards.ui.card_new.NewCardFragment"
+        tools:layout="@layout/fragment_new_card">
+        <argument
+            android:name="deckId"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/deckStudyFragment"
+        android:name="com.example.flashcards.ui.deck_study.DeckStudyFragment"
+        tools:layout="@layout/fragment_deck_study">
+        <argument
+            android:name="deckId"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryListFragment"
+        android:name="com.example.flashcards.ui.categories.CategoryListFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.flashcards.ui.settings_list.SettingsListFragment" />
+</navigation>
