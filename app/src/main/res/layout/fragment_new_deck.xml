@@ -47,16 +47,11 @@
             android:paddingBottom="6dp">
 
             <com.google.android.material.chip.ChipGroup
+                android:id="@+id/ned_deck_chip_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:singleLine="true">
-
-                <com.google.android.material.chip.Chip
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Languages"
-                    style="@style/chipText"/>
-
+                app:singleLine="true"
+                app:singleSelection="true">
             </com.google.android.material.chip.ChipGroup>
 
 
@@ -79,20 +74,16 @@
             style="@style/FlashCardListSeperatorTextViewStyle"
             android:background="@drawable/list_separator"/>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="?attr/textInputOutlinedExposedDropdownMenuStyle"
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp">
 
-            <AutoCompleteTextView
+            <Spinner
+                android:id="@+id/settings_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
                 />
 
-        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
    <Button

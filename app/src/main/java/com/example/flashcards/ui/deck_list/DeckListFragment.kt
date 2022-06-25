@@ -1,21 +1,21 @@
 package com.example.flashcards.ui.deck_list
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.flashcards.R
 import com.example.flashcards.adapters.DeckAdapter
 import com.example.flashcards.databinding.FragmentDeckListBinding
 import com.example.flashcards.databinding.ItemChipTestBinding
+import com.example.flashcards.models.Category
 import com.example.flashcards.models.Deck
-import com.example.flashcards.models.relationships.DeckWithCards
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.chip.Chip
-import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -24,6 +24,9 @@ class DeckListFragment : Fragment(), OnDeckEventListener {
     private lateinit var binding: FragmentDeckListBinding
     private lateinit var deckAdapter: DeckAdapter
     private val viewModel: DeckListViewModel by viewModel()
+
+
+    private lateinit var toolbar: MaterialToolbar
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,8 +44,6 @@ class DeckListFragment : Fragment(), OnDeckEventListener {
         viewModel.decks.observe(viewLifecycleOwner) {
             if (it != null && it.isNotEmpty()){
                 deckAdapter.setDecks(it)
-                val bla = it
-                Log.d(TAG, "onCreateView: fafas")
             }
         }
 
@@ -57,7 +58,15 @@ class DeckListFragment : Fragment(), OnDeckEventListener {
             }
         }
 
-        setupChip()
+        viewModel.categories.observe(viewLifecycleOwner){
+            if (it != null && it.isNotEmpty()){
+                setupChip(it)
+                deckAdapter.setCategories(it)
+            }
+        }
+
+        toolbar = requireActivity().findViewById(R.id.toolbar)
+        toolbar.title = "My Collection"
 
         return binding.root
 
@@ -89,14 +98,21 @@ class DeckListFragment : Fragment(), OnDeckEventListener {
         findNavController().navigate(action)
     }
 
+    override fun onDeckLongPress(deck: Deck): Boolean {
+        viewModel.delete(deck)
+        Toast.makeText(context, "Deck deleted!", Toast.LENGTH_SHORT).show()
+        return true
+    }
+
     private fun showAddToCollectionAdapter(){
 
         val action = DeckListFragmentDirections.actionDeckListFragmentToAddToCollectionPagerFragment()
         findNavController().navigate(action)
     }
 
-    private fun setupChip() {
-        for (category in viewModel.categories){
+    private fun setupChip(categories: List<Category>) {
+        binding.chipGroup.removeAllViews()
+        for (category in categories){
             val chip = createChip(category.category_name)
             binding.chipGroup.addView(chip)
 
@@ -112,10 +128,6 @@ class DeckListFragment : Fragment(), OnDeckEventListener {
 
 
     private fun click(id: Long?){
-
-        val decksWithCards: List<DeckWithCards> = viewModel.convertRoomClass(decks = viewModel.decks.value!!)
-        val bla: String = "Bla"
-
         if (viewModel.currentCategory.value == null){
             viewModel.setCurrentCategory(id!!)
         }else{

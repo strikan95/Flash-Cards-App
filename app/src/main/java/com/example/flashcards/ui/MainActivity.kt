@@ -1,11 +1,18 @@
 package com.example.flashcards.ui
 
+import android.content.Context
+import android.graphics.Rect
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.View
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import com.example.flashcards.R
 import com.example.flashcards.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 

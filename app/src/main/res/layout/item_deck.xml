@@ -25,9 +25,11 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/deck_item_category_color"
                 android:layout_width="8dp"
                 android:layout_height="match_parent"
-                android:background="@color/s_red"/>
+                android:background="@color/s_red"
+                android:orientation="horizontal" />
 
             <TextView
                 android:id="@+id/item_deck_title"

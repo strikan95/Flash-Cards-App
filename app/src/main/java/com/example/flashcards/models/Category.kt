@@ -11,6 +11,6 @@ data class Category (
     @ColumnInfo(name = "category_name")
     var category_name: String,
     @ColumnInfo(name = "category_color")
-    var category_color: String,
+    var category_color: Int,
 
 )

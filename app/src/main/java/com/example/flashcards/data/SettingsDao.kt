@@ -1,6 +1,8 @@
 package com.example.flashcards.data
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.flashcards.models.Settings
+import com.example.flashcards.models.relationships.SettingsWithDecks
 
 @Dao
 interface SettingsDao {
@@ -10,9 +12,20 @@ interface SettingsDao {
     @Delete
     fun delete(settings: Settings)
 
+    @Update
+    fun update(settings: Settings)
+
     @Query("SELECT * FROM settings")
-    fun getSettingsById(): Settings?
+    fun getAllSettings(): LiveData<List<Settings>>
 
     @Query("SELECT * FROM settings WHERE settings_id =:settings_id")
     fun getSettingsById(settings_id: Long?): Settings?
+
+    @Transaction
+    @Query("SELECT * FROM settings WHERE settings_id =:settings_id")
+    fun getSettingsWithDeck(settings_id: Long?): SettingsWithDecks
+
+    @Transaction
+    @Query("SELECT EXISTS(SELECT * FROM decks WHERE deck_settings_id=:settings_id)")
+    fun isSettingInUse(settings_id: Long): Boolean
 }

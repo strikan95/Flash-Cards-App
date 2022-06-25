@@ -31,10 +31,6 @@ class AddToCollectionPagerFragment : Fragment() {
             tab.text = getTabTitle(position)
         }.attach()
 
-        binding.toolbar.setNavigationOnClickListener { view ->
-            view.findNavController().navigateUp()
-        }
-
         return binding.root
     }
 

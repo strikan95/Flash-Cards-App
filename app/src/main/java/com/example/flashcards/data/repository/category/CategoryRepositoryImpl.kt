@@ -15,12 +15,17 @@ class CategoryRepositoryImpl(val categoryDao: CategoryDao) : CategoryRepository 
     override fun delete(category: Category) =
         categoryDao.delete(category)
 
+    override fun update(category: Category) =
+        categoryDao.update(category)
+
     override fun getCategoryById(category_id: Long): Category? =
         categoryDao.getCategoryById(category_id)
 
-    override fun getAllCategories(): List<Category> =
+    override fun getAllCategories(): LiveData<List<Category>> =
         categoryDao.getAllCategories()
 
     override fun getCategoryWithDecks(category_id: Long): List<CategoryWithDecks> =
         categoryDao.getCategoryWithDecks(category_id)
+
+    override fun isCategoryInUse(category_id: Long?): Boolean = categoryDao.isCategoryInUse(category_id)
 }

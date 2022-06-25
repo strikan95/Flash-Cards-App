@@ -54,6 +54,8 @@ dependencies {
 
     implementation 'androidx.compose.material3:material3:1.0.0-alpha13'
 
+    implementation 'com.github.rtugeek:colorseekbar:2.0.3'
+
     // Navigation component:
     implementation navigation_fragment_ktx
     implementation navigation_ui_ktx

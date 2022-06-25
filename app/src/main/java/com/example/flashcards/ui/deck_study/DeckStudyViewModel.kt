@@ -1,12 +1,16 @@
 package com.example.flashcards.ui.deck_study
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.flashcards.data.repository.card.CardRepository
 import com.example.flashcards.data.repository.deck.DeckRepository
 import com.example.flashcards.models.Card
+import java.time.temporal.ChronoUnit
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 const val CARD_QUESTION_SHOWN = 0
 const val CARD_ANSWER_SHOWN = 1
@@ -31,12 +35,10 @@ class DeckStudyViewModel(
     private var cardsToRevise = mutableListOf<Card>()
     private var cardQueue = LinkedList<Card>()
 
+
     fun mStartStudy(id: Long){
         // Current time
         val currentTime = System.currentTimeMillis()
-
-        //TESTING
-        val test = deckRepository.getDeckWithCards(id)
 
         // Fetch cards
         val allCards = cardRepository.getAllCardsFromDeck(id)
@@ -78,25 +80,47 @@ class DeckStudyViewModel(
 
         //var bla = list.first{ it < 20 }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun saveAnswerAndLoadNext(confidence: Long){
         if (currentCard != null){
+
+            var newTime: Long = 0
+
             // Get current time
             val currentTime = System.currentTimeMillis()
+            val timeInDays = TimeUnit.MILLISECONDS.toDays(currentTime)
+            val dayInMillis = TimeUnit.DAYS.toMillis(1)
+            val minuteInMillis = TimeUnit.MINUTES.toMillis(1)
+
+            val truncatedTime = TimeUnit.MILLISECONDS.toDays(currentTime)
+
+            var addedDay = TimeUnit.DAYS.toMillis(truncatedTime + 1)
+
+            val day = ChronoUnit.MILLIS.duration.toDays()
 
             // Take the copy of current card
             val tmpCard: Card = currentCard!!
 
+
+            // Update last revised time
+            if (confidence < GOOD_TIME_MS){
+                newTime = currentTime + confidence
+            }else{
+                newTime = TimeUnit.DAYS.toMillis(timeInDays + 1)
+            }
+
             // Edit time that the card will be revised
-            tmpCard.card_last_date_revised = Date(currentTime.plus(confidence))
+            tmpCard.card_last_date_revised = Date(newTime)
 
             // Update db
             cardRepository.updateLastRevised(tmpCard.card_last_date_revised, tmpCard.card_deck_id, tmpCard.card_id)
+
 
             // If the confidence is less than good add it back to queue
             if(confidence < GOOD_TIME_MS){
                 val i = cardQueue.indexOf(cardQueue.firstOrNull(){
                     it.card_last_date_revised != null &&
-                    it.card_last_date_revised!!.time > currentTime + confidence })
+                    it.card_last_date_revised!!.time > newTime })
 
                 if (i == -1){
                     cardQueue.offer(tmpCard)

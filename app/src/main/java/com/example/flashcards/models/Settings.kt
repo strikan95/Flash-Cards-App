@@ -13,4 +13,8 @@ data class Settings (
     var settings_id: Long,
     @ColumnInfo(name = "settings_name")
     var settings_name: String,
-)
+){
+    override fun toString(): String {
+        return settings_name
+    }
+}

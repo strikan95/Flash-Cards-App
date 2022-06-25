@@ -11,5 +11,5 @@ data class SettingsWithDecks(
         parentColumn = "settings_id",
         entityColumn = "deck_settings_id"
     )
-    @Embedded val deck: List<Deck>
+    val deck: List<Deck>
 )

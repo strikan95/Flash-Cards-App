@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.util.Log
 import androidx.core.graphics.toColorInt
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.flashcards.R
@@ -15,6 +16,7 @@ import com.example.flashcards.models.Category
 import com.example.flashcards.models.Deck
 import com.example.flashcards.models.relationships.DeckWithCards
 import com.google.android.material.chip.Chip
+import java.util.*
 
 class DeckListViewModel(
     val deckRepository: DeckRepository,
@@ -22,15 +24,6 @@ class DeckListViewModel(
 ) : ViewModel() {
     val decks = deckRepository.getAllDecks()
     val categories = categoryRepository.getAllCategories()
-
-    fun convertRoomClass(decks: List<Deck>) = decks.map {
-        deckRepository.getDeckWithCards(it.deck_id)
-    }
-
-    private var _categoryLiveData = MutableLiveData<List<Category>>()
-    fun getCategories() : LiveData<List<Category>>{
-        return _categoryLiveData
-    }
 
     private var _currentCategory = MutableLiveData<Category>()
     val currentCategory: LiveData<Category> = _currentCategory

@@ -6,22 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/white">
-        <TextView
-            android:id="@+id/deck_details_deck_title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="My Collection"
-            android:textSize="24sp"
-            android:gravity="center"/>
-    </com.google.android.material.appbar.AppBarLayout>
-
-
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

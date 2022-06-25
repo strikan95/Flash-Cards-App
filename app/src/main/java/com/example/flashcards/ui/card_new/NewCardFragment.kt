@@ -25,9 +25,6 @@ class NewCardFragment : Fragment() {
         binding = FragmentNewCardBinding.inflate(layoutInflater)
         binding.addNewCardBtn.setOnClickListener{ saveCard() }
 
-        binding.toolbar.setNavigationOnClickListener { view ->
-            view.findNavController().navigateUp()
-        }
         return binding.root
     }
 

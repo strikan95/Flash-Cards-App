@@ -7,7 +7,7 @@ import com.example.flashcards.models.relationships.DeckWithCards
 interface DeckRepository {
     fun save(deck: Deck)
     fun delete(deck: Deck)
-    fun getDeckById(deck_id: Long?): Deck?
     fun getAllDecks(): LiveData<List<Deck>>
+    fun getDeckById(deck_id: Long?): Deck?
     fun getDeckWithCards(deck_id: Long): DeckWithCards
 }
